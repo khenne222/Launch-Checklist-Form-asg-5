@@ -58,6 +58,22 @@ window.addEventListener("load", function () {
          copilotStatus.innerHTML = `Copilot: ${copilot}`
          fuelStatus.innerHTML = `Fuel Level: ${level}`
          cargoStatus.innerHTML = `Cargo Mass: ${mass}`
+         if (level<10000){
+         launchStatus.innerHTML = "Shuttle not ready for launch.."
+         launchStatus.style.color = "red"
+         fuelStatus.innerHTML = "Fuel Level low - Must be over 10000"
+         
+         
+
+         }else if(mass > 10000) {
+         launchStatus.innerHTML = "Shuttle not ready for launch.."
+         launchStatus.style.color = "red"
+         cargoStatus.innerHTML = "Cargo mass TOO HIGH - offload"  
+         }else{
+            launchStatus.innerHTML = "Shuttle is ready for launch"
+            launchStatus.style.color = "green"
+         }
+      
 
 
       }
