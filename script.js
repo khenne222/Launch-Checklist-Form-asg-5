@@ -17,21 +17,40 @@
 // This process is going to look similar to the validation section in the chapter on forms. 
 // Make sure to use preventDefault() to cancel form submission.
 window.addEventListener("load", function () {
+   let pilotStatus = document.getElementById("pilotStatus");
+   let copilotStatus = document.getElementById("copilotStatus");
+   let fuelStatus = document.getElementById("fuelStatus");
+   let cargoStatus = document.getElementById("cargostatus");
+   let itemStatus = document.getElementById("itemStatus");
+   let launchStatus = document.getElementById("launchStatus");
+   let launchStatusCheck = document.getElementById("launchStatusCheck");
+   let missionTarget = document.getElementById("missionTarget");
+   let launchForm = document.getElementById("launchForm");
 
-   form.addEventListener("submit", (event) => {
+   launchForm.addEventListener("submit", (event) => {
       event.preventDefault();
    
-      let pilotStatus = document.getElementById("pilotStatus");
-      let copilotStatus = document.getElementById("copilotStatus");
-      let fuelStatus = document.getElementById("fuelStatus");
-      let cargoStatus = document.getElementById("cargostatus");
-      let itemStatus = document.getElementById("itemStatus");
-      let launchStatus = document.getElementById("launchStatus");
-      let launchStatusCheck = document.getElementById("launchStatusCheck");
-      let missionTarget = document.getElementById("missionTarget");
-      let launchForm = document.getElementById("launchForm");
+      let pilotName = document.querySelector("input[name=pilotName]");
+      let pilot = pilotName.value;
+      let pilotCheck = Number(pilot);
 
+      let copiName = document.querySelector("input[name=copilotName");
+      let copilot = copiName.value;
+      let nameCheck = Number(copilot);
 
+      let fuelLevel = document.querySelector("input[name=fuelLevel]");
+      let level = fuelLevel.value;
+      let levelCheck = Number (level);
+
+      let cargoMass = document.querySelector("input[name=cargoMass]");
+      let mass = cargoMass.value;
+      let massCheck = Number (mass);
+
+      // The pilot and co-pilot names should be strings and the fuel
+      // level and cargo mass should be numbers. If any of these conditions is not met, alert the user.
+      // *Note: If you want to check if something is NaN , you cannot use == or* * === . Instead, JavaScript has a built-in method called isNaN(value) * *that returns true if value is NaN and false if value is not*
+      // *NaN.*
+   });
 
 
 });
