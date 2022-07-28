@@ -46,10 +46,21 @@ window.addEventListener("load", function () {
       let mass = cargoMass.value;
       let massCheck = Number (mass);
 
+      if (!pilot ||!copilot ||!level ||!mass ){
+         //testing to see if item entered is not, not a number (double negative) - strings should equal false,
+         //numbers will equal true 
+             alert("All fields required");
+         } else if(isNaN(pilotCheck) === false || isNaN(nameCheck) === false || isNaN(levelCheck) === true || isNaN(massCheck) === true){
+             alert("Make sure to enter valid information.")
+            }
+
+
+
       // The pilot and co-pilot names should be strings and the fuel
       // level and cargo mass should be numbers. If any of these conditions is not met, alert the user.
       // *Note: If you want to check if something is NaN , you cannot use == or* * === . Instead, JavaScript has a built-in method called isNaN(value) * *that returns true if value is NaN and false if value is not*
       // *NaN.*
+
    });
 
 
