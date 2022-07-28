@@ -20,7 +20,7 @@ window.addEventListener("load", function () {
    let pilotStatus = document.getElementById("pilotStatus");
    let copilotStatus = document.getElementById("copilotStatus");
    let fuelStatus = document.getElementById("fuelStatus");
-   let cargoStatus = document.getElementById("cargostatus");
+   let cargoStatus = document.getElementById("cargoStatus");
    let itemStatus = document.getElementById("itemStatus");
    let launchStatus = document.getElementById("launchStatus");
    let launchStatusCheck = document.getElementById("launchStatusCheck");
@@ -29,7 +29,7 @@ window.addEventListener("load", function () {
 
    launchForm.addEventListener("submit", (event) => {
       event.preventDefault();
-   
+
       let pilotName = document.querySelector("input[name=pilotName]");
       let pilot = pilotName.value;
       let pilotCheck = Number(pilot);
@@ -40,19 +40,27 @@ window.addEventListener("load", function () {
 
       let fuelLevel = document.querySelector("input[name=fuelLevel]");
       let level = fuelLevel.value;
-      let levelCheck = Number (level);
+      let levelCheck = Number(level);
 
       let cargoMass = document.querySelector("input[name=cargoMass]");
       let mass = cargoMass.value;
-      let massCheck = Number (mass);
+      let massCheck = Number(mass);
 
-      if (!pilot ||!copilot ||!level ||!mass ){
+      if (!pilot || !copilot || !level || !mass) {
          //testing to see if item entered is not, not a number (double negative) - strings should equal false,
          //numbers will equal true 
-             alert("All fields required");
-         } else if(isNaN(pilotCheck) === false || isNaN(nameCheck) === false || isNaN(levelCheck) === true || isNaN(massCheck) === true){
-             alert("Make sure to enter valid information.")
-            }
+         alert("All fields required");
+      } else if (isNaN(pilotCheck) === false || isNaN(nameCheck) === false || isNaN(levelCheck) === true || isNaN(massCheck) === true) {
+         alert("Make sure to enter valid information.")
+      } else {
+         itemStatus.style.visibility = "visible";
+         pilotStatus.innerHTML = `Pilot: ${pilot}`
+         copilotStatus.innerHTML = `Copilot: ${copilot}`
+         fuelStatus.innerHTML = `Fuel Level: ${level}`
+         cargoStatus.innerHTML = `Cargo Mass: ${mass}`
+
+
+      }
 
 
 
