@@ -17,6 +17,27 @@
 // This process is going to look similar to the validation section in the chapter on forms. 
 // Make sure to use preventDefault() to cancel form submission.
 window.addEventListener("load", function () {
+   fetch ( "https://handlers.education.launchcode.org/static/planets.json" ).then((response) => {
+   response.json().then(function(json){
+         let index = Math.floor(Math.random()*json.length);
+         let data = json[index]
+         let missionTarget = document.getElementById("missionTarget")
+         //take html that ive created and place into html instead - into mission target location
+          missionTarget.innerHTML = `
+         <h2>Mission Destination</h2>
+         <ol>
+             <li>Name: ${data.name}</li>
+             <li>Diameter: ${data.diameter}</li>
+             <li>Star: ${data.star}</li>
+             <li>Distance from Earth: ${data.distance}</li>
+             <li>Number of Moons: ${data.moons}</li>
+         </ol>
+         <img src="${data.image}">
+         `
+      })
+   })
+
+
    let pilotStatus = document.getElementById("pilotStatus");
    let copilotStatus = document.getElementById("copilotStatus");
    let fuelStatus = document.getElementById("fuelStatus");
@@ -24,7 +45,6 @@ window.addEventListener("load", function () {
    let itemStatus = document.getElementById("itemStatus");
    let launchStatus = document.getElementById("launchStatus");
    let launchStatusCheck = document.getElementById("launchStatusCheck");
-   let missionTarget = document.getElementById("missionTarget");
    let launchForm = document.getElementById("launchForm");
 
    launchForm.addEventListener("submit", (event) => {
@@ -58,13 +78,16 @@ window.addEventListener("load", function () {
          copilotStatus.innerHTML = `Copilot: ${copilot}`
          fuelStatus.innerHTML = `Fuel Level: ${level}`
          cargoStatus.innerHTML = `Cargo Mass: ${mass}`
-         if (level<10000){
+         if (level<10000 && mass >10000){
+         launchStatus.innerHTML = "Shuttle not ready for launch.."
+         launchStatus.style.color = "red"
+         cargoStatus.innerHTML = "Cargo mass too high"
+         fuelStatus.innerHTML = "Fuel level too low"
+         }else if
+         (level<10000){
          launchStatus.innerHTML = "Shuttle not ready for launch.."
          launchStatus.style.color = "red"
          fuelStatus.innerHTML = "Fuel Level low - Must be over 10000"
-         
-         
-
          }else if(mass > 10000) {
          launchStatus.innerHTML = "Shuttle not ready for launch.."
          launchStatus.style.color = "red"
@@ -72,6 +95,8 @@ window.addEventListener("load", function () {
          }else{
             launchStatus.innerHTML = "Shuttle is ready for launch"
             launchStatus.style.color = "green"
+            cargoStatus.innerHTML = "Cargo mass less than 10000"
+            fuelStatus.innerHTML = "Fuel level acceptable greater than 10000"
          }
       
 
